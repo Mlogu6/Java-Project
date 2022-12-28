@@ -1,8 +1,5 @@
 pipeline{
     agent any 
-    environment{
-        VERSION = "${env.BUILD_ID}"
-    }
     stages{
         stage("sonar quality check"){
             agent {
@@ -12,7 +9,7 @@ pipeline{
             }
             steps{
                 script{
-                    withSonarQubeEnv(credentialsId: 'Jenkins-Token') {
+                    withSonarQubeEnv(credentialsId: 'Sonar-Token') {
                             sh 'chmod +x gradlew'
                             sh './gradlew sonarqube'
                     }
