@@ -2,7 +2,7 @@ pipeline {
     agent any 
     stages {
         stage("sonar quality check"){
-            steps {
+            steps{
                 script {
                     withSonarQubeEnv(credentialsId: 'Sonar-Token') {
                             sh 'chmod +x gradlew'
@@ -13,7 +13,8 @@ pipeline {
                       if (qg.status != 'OK') {
                            error "Pipeline aborted due to quality gate failure: ${qg.status}"
                       }
-                }
+                   }
+               }
             }
 	}
     }
