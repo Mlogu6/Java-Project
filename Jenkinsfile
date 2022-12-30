@@ -13,6 +13,7 @@ pipeline {
                       if (qg.status != 'OK') {
                            error "Pipeline aborted due to quality gate failure: ${qg.status}"
                       }
+<<<<<<< HEAD
                     }
 
                 }
@@ -20,3 +21,11 @@ pipeline {
 	   }
     }
 }
+=======
+                   }
+               }
+            }
+	}
+    }
+}
+>>>>>>> 5bedc0b9a31ade9a7793a7c7379ddec49b17b8df
