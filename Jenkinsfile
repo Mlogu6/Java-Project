@@ -1,6 +1,6 @@
 pipeline {
     agent any
-    enviroment {
+    enviroment{
         VERSION = "${env.BUILD_ID}"
     }
     stages {
