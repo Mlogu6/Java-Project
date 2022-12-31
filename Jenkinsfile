@@ -34,12 +34,12 @@ pipeline {
                 }
             }
         }
-        stage("datree connfiguration") {
+        stage('datree connfiguration') {
             steps{
                 script{
                     dir('kubernetes/') {
                         sh 'helm datree test myapp/'
-}
+                    }
                 }
             }
         }
