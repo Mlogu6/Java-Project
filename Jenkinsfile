@@ -34,7 +34,15 @@ pipeline {
                 }
             }
         }
-
+        stage("datree connfiguration") {
+            steps{
+                script{
+                    dir('kubernetes/') {
+                        sh 'helm datree test myapp/'
+}
+                }
+            }
+        }
     }
 
     post {
