@@ -17,10 +17,9 @@ pipeline {
                            error "Pipeline aborted due to quality gate failure: ${qg.status}"
                       }
                     }
-
                 }
             }
-	   }
+	    }
         stage("docker build & docker push") {
             steps{
                 script{
@@ -32,7 +31,6 @@ pipeline {
                                 docker rmi 3.111.245.79:8083/springapp:${VERSION}
                               '''
                     }
-                    
                 }
             }
         }
