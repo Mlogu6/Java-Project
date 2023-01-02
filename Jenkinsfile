@@ -37,17 +37,19 @@ pipeline {
         stage('datree configuration') {
             steps{
                 script{
-                    dir('kubernetes/') {
-                              sh 'helm-datree test myapp/'
+                    dir('var/lib/jenkins/workspace/Java-Application-Project/kubernetes/') {
+                        withEnv(['DATREE_TOKEN=addefc43-c0d1-4fd8-8d0f-55de9603e22e']) {
+                                sh 'helm-datree test myapp/'
+                            } 
+                              
                         }
                     }
                 }
             }
         }
     }
-
     post {
 		always {
 			mail bcc: '', body: "<br>Project: ${env.JOB_NAME} <br>Build Number: ${env.BUILD_NUMBER} <br> URL de build: ${env.BUILD_URL}", cc: '', charset: 'UTF-8', from: '', mimeType: 'text/html', replyTo: '', subject: "${currentBuild.result} CI: Project name -> ${env.JOB_NAME}", to: "mlogu6@gmail.com";  
-		}
-	  }
+	}
+}
