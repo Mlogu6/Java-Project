@@ -37,15 +37,14 @@ pipeline {
         stage('datree configuration') {
             steps{
                 script{
-
-                    dir ('kubernetes/') {
+                        withEnv(['DATREE_TOKEN=3905f8bf-5fff-4276-a2f3-840795d1a718']) {
                             sh "helm datree test myapp/"
+                            }
                         }
                     }
                 }
             }
         }
-    }
     post {
 		always {
 			mail bcc: '', body: "<br>Project: ${env.JOB_NAME} <br>Build Number: ${env.BUILD_NUMBER} <br> URL de build: ${env.BUILD_URL}", cc: '', charset: 'UTF-8', from: '', mimeType: 'text/html', replyTo: '', subject: "${currentBuild.result} CI: Project name -> ${env.JOB_NAME}", to: "mlogu6@gmail.com";  
