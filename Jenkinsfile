@@ -37,8 +37,7 @@ pipeline {
         stage('datree configuration') {
             steps{
                 script{
-                    dir('/var/lib/jenkins/workspace/Java-Application-Project/kubernetes/') {
-                        withEnv(['DATREE_TOKEN=addefc43-c0d1-4fd8-8d0f-55de9603e22e']) {
+                    dir('kubernetes/') {
                               sh 'helm-datree test myapp/'
                         }
                     }
